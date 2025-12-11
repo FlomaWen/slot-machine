@@ -12,6 +12,7 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
+    "ammo.js": "^0.0.10",
     "three": "^0.182.0"
   }
 }
