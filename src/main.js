@@ -1,24 +1,17 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { RouletteScene } from './roulette.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Attendre que le DOM soit chargé
+document.addEventListener('DOMContentLoaded', () => {
+  // Récupérer le canvas
+  const canvas = document.getElementById('canvas3d');
 
-setupCounter(document.querySelector('#counter'))
+  // Initialiser la scène 3D
+  const scene = new RouletteScene(canvas);
+
+  // Gérer le bouton SPIN
+  const spinButton = document.getElementById('spinButton');
+  spinButton.addEventListener('click', () => {
+    scene.spin();
+  });
+});

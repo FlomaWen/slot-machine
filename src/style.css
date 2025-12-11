@@ -1,96 +1,130 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#canvas3d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 2rem;
-  text-align: center;
+  z-index: 10;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 50, 50, 0.8),
+               0 0 40px rgba(255, 50, 50, 0.5);
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.card {
-  padding: 2em;
+#result {
+  display: none;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem 4rem;
+  border-radius: 20px;
+  border: 4px solid #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+  animation: resultPulse 1s ease-in-out;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes resultPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 50, 50, 0.8),
+                 0 0 40px rgba(255, 50, 50, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(255, 50, 50, 1),
+                 0 0 60px rgba(255, 50, 50, 0.7),
+                 0 0 80px rgba(255, 50, 50, 0.4);
+  }
+}
+
+#spinButton {
+  pointer-events: auto;
+  padding: 1.5rem 4rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #ff3333 0%, #ff6666 50%, #ff3333 100%);
+  border: 4px solid #fff;
+  border-radius: 50px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(255, 50, 50, 0.5),
+              inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  letter-spacing: 0.2em;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+#spinButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 50, 50, 0.7),
+              inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #ff6666 0%, #ff3333 50%, #ff6666 100%);
+}
+
+#spinButton:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(255, 50, 50, 0.5),
+              inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#spinButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

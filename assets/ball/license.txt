@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ball
+* source:	https://sketchfab.com/3d-models/ball-0a0c170c836d42869912de1f4f337369
+* author:	ameerodeh (https://sketchfab.com/ameerodeh)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ball" (https://sketchfab.com/3d-models/ball-0a0c170c836d42869912de1f4f337369) by ameerodeh (https://sketchfab.com/ameerodeh) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
